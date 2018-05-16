@@ -1,7 +1,7 @@
 /* This file should contain CSS that modifies the popup layout. */
 /* By layout, we mean the physical position of the elements on the popup window, and the margin / padding around those elements. */
 
-
+.cc-revoke {display:none!important}
 .cc-revoke.cc-top {top:0; left: 3em; border-bottom-left-radius:.5em;border-bottom-right-radius:.5em;}
 .cc-revoke.cc-bottom {bottom:0; left: 3em; border-top-left-radius:.5em;border-top-right-radius:.5em;}
 .cc-revoke.cc-left{left: 3em; right: unset;}
