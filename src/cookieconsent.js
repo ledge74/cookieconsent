@@ -418,6 +418,13 @@
       if (this.options.autoOpen) {
         this.autoOpen();
       }
+
+      var that = this;
+      document.querySelector('body').addEventListener('click', function(event) {
+        if (event.target.getAttribute("show-cookieconsent-banner") === 'true') {
+          that.open();
+        }
+      });
     };
 
     CookiePopup.prototype.destroy = function() {
