@@ -198,10 +198,29 @@
       // these callback hooks are called at certain points in the program execution
       onPopupOpen: function() {},
       onPopupClose: function() {},
-      onInitialise: function(status) {},
-      onStatusChange: function(status, chosenBefore) {},
+      onInitialise: function(status) {
+        if (status === 'allow') {
+          this.options.enableCookies();
+        }
+      },
+      onStatusChange: function(status, chosenBefore) {
+        if (status === 'allow') {
+          this.options.enableCookies();
+        }
+        if (status === 'dismiss') {
+          location.reload();
+        }
+      },
       onRevokeChoice: function() {},
-
+      enableCookies: function() {
+        var toDefer = document.querySelectorAll("[type='text/plain']");
+        for (var i = 0; i < toDefer.length; i++) {
+          var currentElement = toDefer[i];
+          var newElement = currentElement.cloneNode(true);
+          newElement.type = 'text/javascript';
+          currentElement.parentNode.replaceChild(newElement, currentElement);
+        }
+      },
       // each item defines the inner text for the element that it references
       content: {
         header: 'Cookies used on the website!',
